@@ -1,0 +1,1741 @@
+<bi:biapp bi:version="1502" xmlns:bi="http://xml.sap.com/2011/biml/biapp" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/TR/REC-html40" xmlns:h="http://www.w3.org/TR/REC-html40" xmlns:sdk1="com.sap.ip.bi" sdk1:version="15.1" xmlns:sdk2="org.scn.community.basics" sdk2:version="2.0" xmlns:sdk3="org.scn.community.databound" sdk3:version="2.0">
+	<bi:component name="APPLICATION_PROPERTIES" type="APPLICATION_PROPERTIES">
+		<bi:property name="THEME" value="sap_bluecrystal"/>
+		<bi:property name="CUSTOM_CSS" value="SAP_DEMO_SAPPHIRE.css"/>
+		<bi:property name="GLOBALVARIABLES" type="UNORDEREDLIST">
+			<bi:property name="GLOBALVARIABLE" index="0">
+				<bi:property name="NAME" value="g_navigation_on"/>
+				<bi:property name="VALUE" value="false"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="1">
+				<bi:property name="NAME" value="g_settings_on"/>
+				<bi:property name="VALUE" value="false"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="2">
+				<bi:property name="NAME" value="g_dialog_click"/>
+				<bi:property name="VALUE" value="false"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="3">
+				<bi:property name="NAME" value="g_dialog"/>
+				<bi:property name="VALUE" value="&apos;&apos;"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="4">
+				<bi:property name="NAME" value="g_filter_on"/>
+				<bi:property name="VALUE" value="true"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="5">
+				<bi:property name="NAME" value="g_info_on"/>
+				<bi:property name="VALUE" value="false"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="6">
+				<bi:property name="NAME" value="g_display_mode"/>
+				<bi:property name="VALUE" value="&apos;TABLE&apos;"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="7">
+				<bi:property name="NAME" value="g_chart_swap"/>
+				<bi:property name="VALUE" value="false"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="8">
+				<bi:property name="NAME" value="g_chart_scaling"/>
+				<bi:property name="VALUE" value="false"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="9">
+				<bi:property name="NAME" value="g_nav_tab_first"/>
+				<bi:property name="VALUE" value="&apos;ACTUALS&apos;"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="10">
+				<bi:property name="NAME" value="g_nav_tab_second"/>
+				<bi:property name="VALUE" value="&apos;OVERVIEW&apos;"/>
+			</bi:property>
+			<bi:property name="GLOBALVARIABLE" index="11">
+				<bi:property name="NAME" value="g_ds_1_counter"/>
+				<bi:property name="VALUE" value="0"/>
+			</bi:property>
+		</bi:property>
+		<bi:property name="MESSAGE_TYPES" value="NONE"/>
+		<bi:property name="ON_STARTUP">
+			<bi:value><![CDATA[START_FUNCTIONS.on_startup();
+FACETFILTER.reloadDataSource();
+
+
+]]></bi:value>
+		</bi:property>
+		<bi:property name="ON_VAR_SUBMIT">
+			<bi:value><![CDATA[
+]]></bi:value>
+		</bi:property>
+		<bi:property name="BACK_NAVIGATION_ENABLED_STEPS" value="20"/>
+		<bi:property name="INITVARSCREEN_HEIGHT" value="500"/>
+		<bi:property name="INITVARSCREEN_WIDTH" value="500"/>
+	</bi:component>
+	<bi:data_source_alias name="DS_SALES" type="QUERY_DATA_SOURCE">
+		<bi:property name="DATA_SOURCE_DEFINITION">
+			<bi:property name="DATA_SOURCE_CONNECTION" value="local"/>
+			<bi:property name="DATA_SOURCE_TYPE" type="CHOICE" value="INFOPROVIDER"/>
+			<bi:property name="DATA_SOURCE_NAME" value="Demo_Data_Sales_and_Lost.csv"/>
+			<bi:property name="DATA_SOURCE_INITIAL_STATE">
+				<bi:value><![CDATA[eNrtW1tv4jgU/iuI9yWz72kk4xzAqrFT26GlL1aGpl2kFiqgI83++j25kkDaAtvpMt1UVRX7XGyf7/OxHadun1FtJwyuPVeDmjAK1gdNFQsMk8JzfWKIJQqI58OAhNy4zrbKZWIgbaDkhPmgPD9+Wlo/2kRWR4/x2kaLO8uX601vtv7hOnVd12lsrqbUWURP8UX3Lbddx3OvQlDTA3U1cKBJU1YHBBvXUhkmhp3Nz+fEOhvijqIh5nDFSkWuS4kyoBkRybj8kJqu59IRUYQaUEwbBGC3Ih/MFIiyYynMqFtxq7FRp67/ij0NtZFjUKdZ+1hQFkVCAD/NRUISS6UPp5krGKL+qbZEIyZcaoMMI1yf5uYy/nk/f3hZxeuafRXl5XO8ijbL1UUXrkLCuznsiohhOm42FB7cUB76yB+kfVJ2J4SHyJUxjPslzzV2AGwqKZxk8oRmTm7hlA1Xn3XDeJw9kjXbFrw9gZMTpnHE7JakfjhMgG/TRJMwH7AllILGJgIFGoQh+RiqRQ/5F3AytZcwdZ2apF5MwGicnKk/LDABvs0a1lYqTCwYT5+pPBREUxAZNttKjE/mE592+lwJYq0bne/zxd188VCglhuk4FVssklpA4ztGDC4CRdHDBRRdDTt3L3EmL1wEN/yn24e98QNtobjshpM+YxBZn3GmZl66SMH19kXHdbRc41/ddhHJ77jKUqMUawfYs6uPOeOuRRDZsI0obXk/xjyV+H9oJBsIXR2+VOKGsDFihbcLwouxTzY4vr74+pU0/MR2Bi4MUf14NwRqofrMzYYI+b7ID5sf3EcIm9E4tx2H7sHp1+ac5qi2G6jz2gb/fsAdDzTq+f7T2d5y97zyNHnRsryrVHLyJaRZ8LI/XeRLTn/L4v9ubOz9oq7pWWbM38xK6nEVpnQyYZ3wIYhyrzN6iVGujZI3FtQ0uowSPqrE94NlQyDxG1m9Lr8kCuRJgh9xTi3vrwWdkf/9VvAbGrY3VvDgVS2Ovb2bvDr3w06x9/FHcgecpPeSdwwXQxEXid9L3MOCtF+At599LjGuZGXckZnCfsbztFK0XUq1no6xlmgGLWZyhjhKXw1yorcFUjN0rH0pUFalRO+rN+fxqm9kAIapnDme68af9NvDzBtqSn+Jbh0+1kVBc71axnhXbv35py3hfrUpOIksNXAo5KHY9Hi9xn4bbPlx+E3UAAteJ8AXm2xeS83e9nC8K5aufy8q1mslAe0vLOsnMQ1zxX4lH6d1PkRPb4g02bLp946eu7Nn3vf5/g7W/eW9/fzWdxbRD/mD9Fmvlz07uePm3iVblEbfOb0dbIlZBv9znr+sAgwr8WLTernotsHXHfAijD99KTzd7xa1hWEVGOSrPqlm+IUUF7JdGZ/Ratohh2arzfzWW2tzKcPbmgTIlyFRJjkbs4pt+dJB4EybEN7f/yJM6YouJri8UMM7QBDKFUq3KlyYRyMiGa34Bdzp1KTfoyDS+oEGyG8nFy1SmwbN6Hcol8a8my3nM2UBkGDst3ugLdfzL2lhRQYF/7yHlVqXBIEfGobPBiZbw50mXEOUM39IcRI6WPcHmRRpKT94DUI8AChyXCosoyTIl2tKMWXzK9Jk3Jzjq4Q8l9xE3kAOv8Sq+Vly8tz4WW6tLQZs2XmeTKzTZgtLc9sIa98Ut3y8ovykmBgyfA/oKZTPcVuX9TZhAuWszEzyYG/WZC/FpAB9r14bQg3FIKiQKXwWflCcftvOv8AL2EjXA==]]></bi:value>
+			</bi:property>
+		</bi:property>
+	</bi:data_source_alias>
+	<bi:data_source_alias name="DS_FACET_FILTER" type="QUERY_DATA_SOURCE">
+		<bi:property name="DATA_SOURCE_DEFINITION">
+			<bi:property name="DATA_SOURCE_CONNECTION" value="local"/>
+			<bi:property name="DATA_SOURCE_TYPE" type="CHOICE" value="INFOPROVIDER"/>
+			<bi:property name="DATA_SOURCE_NAME" value="Demo_Data_Facett_Cust_Region_Area.csv"/>
+			<bi:property name="DATA_SOURCE_INITIAL_STATE">
+				<bi:value><![CDATA[eNrtWW1v2zYQ/iuGvq/qvisCaPJsE6FEjaScKF8IzVUzA6sz2MqA7tfv9C7Zyux4a2sMMgKDvDeSd88dj7E351TbNYcH39Og1pyCZaCp4pHhMvQ9RgyxRAHxGSxILIzndiSPhwtpIyXXnIHyWfblxbI0T+0i3WR5bunrIbcqe96+7CzZZ+mHzeFPzx0qee7ougOh2S79kt05F9l3XN/7JQaVvFdJgwBaLG51RHA7WirDw+Us//pHYaY6/ZGgIeZywR6hlqVEGdCchMVJWUyN43t0RRShBhTXBmNzTKhPlQBRNpChWTk9sxoXdYfyb+jTWBsZgLpOuwi+pZLBdeoKlih/ne599vXz9vl1nx3O6rsnrnRbhf64ic4Vnl9zHRPBn0hpR8AaRJcnY0wvgGAOyhJKQeMSkQINoSlFjqY+4zoSJLH3kHjugDOcot44BEt7OOEhMFstrK1UmFDoLsZV7QqiKYQM1TG1WyL6p7KJo6M995w42Mbs1+3u03b3fOcMFIpM6Du+gp6N0LcBoHOL2K04KKLoKpl9es0wWfEQH+uPU/u9MIOr4bmsBtOO0cl8zgU3iV8OBXjuKeuyjd6q//vHfnd6f1OIGng0EzZ/ADZ/vOPfD8r+rTGhckLlbaCybUYmSE6QvA1IDnrcCZa3AMsVZwzC/ykqKb5mCA910eku+DJGnp/vXzOE6wjHewIlrY6jYr+6wN1SyTgqzFZKb/MveaONhZApLoRl8iG0R/JvP76r1LDHj/WFVLZ/9ulJfkNP8gtjRh4LGJJHrpvdy4cixdpMRybqr8H/nP5+QETWsxpHVZn8iJnRm3puT1snAWJPcWorkQD92tga5TUVI5Kal2eZS4PBbNOspZ8mT6kfyhBGEqeyfULGv/J/cFgsVILfBC9MVpEoCKHfysOzeueQ7lcwOYcLvwXjWckG9NdWBrdAwQALVIo4CCc4fA84dJn/38VvoQCm4H2H4HX31b8MnlvV427t2WH7vIsQFdkuT/Pty+7OmQMWcbBhXDQszuyvbP8yFAilCohwemaaRlY3g9nmt3SfbvJsvz3k283g4qnBo4kAbddExFC2hq0FBpSjfe3/9DNipZl4mmL3HC7tAs8qVck8InkQRCui+ROwBjU9iqf5MsS7aY2LENHCakDEtbGHEhbt0lhUzV6FkRHGiLDtGrjuJ5h/ksJYBY29ekc9ikeiSCR2xIKR9S2r21y7QLS2h+HFMv4esxdpNMl46rwRBva/miyXqsq1MtJ9Qsu+52zALebjAO+B0e3nVteN2AIIVvCAm6IMjTPqYiUjrEpNbwSPFKJmgn02423X1P0m9zdcdRoH]]></bi:value>
+			</bi:property>
+		</bi:property>
+		<bi:property name="ON_RESULTSETCHANGED">
+			<bi:value><![CDATA[FACETFILTER.reloadSelection();
+
+if (DS_SALES.isInitialized() == true) {
+	DS_SALES.copyFilters(DS_FACET_FILTER);
+}]]></bi:value>
+		</bi:property>
+	</bi:data_source_alias>
+	<bi:component name="ROOT" type="ABSOLUTE_LAYOUT_COMPONENT">
+		<bi:component name="PAGEBOOK" type="PAGEBOOK_COMPONENT">
+			<bi:property name="WIDTH" value="auto"/>
+			<bi:property name="HEIGHT" value="auto"/>
+			<bi:property name="CSS_CLASS" value="general"/>
+			<bi:property name="CACHING_MODE" value="ALL"/>
+			<bi:property name="RIGHT_MARGIN" value="0"/>
+			<bi:property name="BOTTOM_MARGIN" value="0"/>
+			<bi:property name="TRANSITION_EFFECT" value="SLIDE_IN"/>
+			<bi:property name="ENABLE_SWIPING" value=""/>
+			<bi:component name="PAGE_OVERVIEW" type="PAGE_COMPONENT">
+				<bi:component name="IMAGE_1" type="IMAGE_COMPONENT">
+					<bi:property name="RIGHT_MARGIN" value="0"/>
+					<bi:property name="BOTTOM_MARGIN" value="0"/>
+					<bi:property name="WIDTH" value="auto"/>
+					<bi:property name="HEIGHT" value="auto"/>
+					<bi:property name="IMAGE" value="Startscreen_BG.jpg"/>
+					<bi:property name="OPACITY_PERCENTAGE" value="70"/>
+					<bi:property name="ON_CLICK">
+						<bi:value><![CDATA[PAGEBOOK.setSelectedPageByName("PAGE_DETAILS");]]></bi:value>
+					</bi:property>
+				</bi:component>
+			</bi:component>
+			<bi:component name="PAGE_DETAILS" type="PAGE_COMPONENT">
+				<bi:component name="IMAGE_2" type="IMAGE_COMPONENT">
+					<bi:property name="IMAGE" value="Background_Application.jpg"/>
+					<bi:property name="RIGHT_MARGIN" value="0"/>
+					<bi:property name="BOTTOM_MARGIN" value="0"/>
+					<bi:property name="WIDTH" value="auto"/>
+					<bi:property name="HEIGHT" value="auto"/>
+					<bi:property name="OPACITY_PERCENTAGE" value="60"/>
+					<bi:property name="DESIGNER_VISIBLE" value=""/>
+				</bi:component>
+				<bi:component name="PANEL_DATA" type="PANEL_COMPONENT">
+					<bi:property name="LEFT_MARGIN" value="40"/>
+					<bi:property name="TOP_MARGIN" value="60"/>
+					<bi:property name="RIGHT_MARGIN" value="40"/>
+					<bi:property name="BOTTOM_MARGIN" value="0"/>
+					<bi:property name="WIDTH" value="auto"/>
+					<bi:property name="HEIGHT" value="auto"/>
+					<bi:component name="BACKGROUND_WHITE" type="TEXT_COMPONENT">
+						<bi:property name="RIGHT_MARGIN" value="0"/>
+						<bi:property name="BOTTOM_MARGIN" value="0"/>
+						<bi:property name="WIDTH" value="auto"/>
+						<bi:property name="HEIGHT" value="auto"/>
+						<bi:property name="CSS_STYLE" value="background-color: white;&#13;&#10;opacity: 0.5;&#13;&#10;"/>
+					</bi:component>
+					<bi:component name="PANEL_ALL" type="PANEL_COMPONENT">
+						<bi:property name="WIDTH" value="auto"/>
+						<bi:property name="RIGHT_MARGIN" value="20"/>
+						<bi:property name="HEIGHT" value="auto"/>
+						<bi:property name="BOTTOM_MARGIN" value="0"/>
+						<bi:property name="TOP_MARGIN" value="10"/>
+						<bi:property name="LEFT_MARGIN" value="20"/>
+						<bi:component name="HEADER" type="PANEL_COMPONENT">
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="RIGHT_MARGIN" value="0"/>
+							<bi:property name="HEIGHT" value="60"/>
+							<bi:component name="HEADER_TITLE" type="TEXT_COMPONENT">
+								<bi:property name="TOP_MARGIN" value="3"/>
+								<bi:property name="CSS_STYLE" value="line-height: 60px;&#13;&#10;color: #e46229 !important;&#13;&#10;font-size: 24px !important;&#13;&#10;"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="HEIGHT" value="auto"/>
+								<bi:property name="CSS_CLASS" value="myHeaderTitle"/>
+								<bi:property name="BOTTOM_MARGIN" value="0"/>
+								<bi:property name="TEXT" value="DATA EXPLORATION"/>
+							</bi:component>
+							<bi:component name="DATE_START" type="TEXT_COMPONENT">
+								<bi:property name="TOP_MARGIN" value="3"/>
+								<bi:property name="CSS_STYLE" value="line-height: 40px;&#13;&#10;"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="HEIGHT" value="auto"/>
+								<bi:property name="BOTTOM_MARGIN" value="0"/>
+								<bi:property name="LEFT_MARGIN" value="200"/>
+								<bi:property name="VISIBLE" value=""/>
+							</bi:component>
+							<bi:component name="DATE_END" type="TEXT_COMPONENT">
+								<bi:property name="TOP_MARGIN" value="3"/>
+								<bi:property name="CSS_STYLE" value="line-height: 40px;&#13;&#10;&#13;&#10;"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="HEIGHT" value="auto"/>
+								<bi:property name="BOTTOM_MARGIN" value="0"/>
+								<bi:property name="LEFT_MARGIN" value="300"/>
+								<bi:property name="VISIBLE" value=""/>
+							</bi:component>
+							<bi:component name="PANEL_FIRST_ROW" type="PANEL_COMPONENT">
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="3"/>
+								<bi:property name="HEIGHT" value="40"/>
+								<bi:property name="TOP_MARGIN" value="10"/>
+								<bi:component name="BUTTON_HOME" type="BUTTON_COMPONENT">
+									<bi:property name="WIDTH" value="40"/>
+									<bi:property name="ON_CLICK">
+										<bi:value><![CDATA[PAGEBOOK.setSelectedPageByName("PAGE_OVERVIEW");]]></bi:value>
+									</bi:property>
+									<bi:property name="CSS_CLASS" value="ICON_BACK"/>
+									<bi:property name="TOOLTIP" value="Back to Home"/>
+									<bi:property name="HEIGHT" value="auto"/>
+									<bi:property name="BOTTOM_MARGIN" value="0"/>
+								</bi:component>
+								<bi:component name="BUTTON_UNDO" type="BUTTON_COMPONENT">
+									<bi:property name="LEFT_MARGIN" value="50"/>
+									<bi:property name="WIDTH" value="40"/>
+									<bi:property name="CSS_CLASS" value="ICON_UNDO"/>
+									<bi:property name="ON_CLICK">
+										<bi:value><![CDATA[State.backOneStep();]]></bi:value>
+									</bi:property>
+									<bi:property name="HEIGHT" value="40"/>
+									<bi:property name="TOOLTIP" value="Undo"/>
+								</bi:component>
+								<bi:component name="BUTTON_HEADER_INFO" type="BUTTON_COMPONENT">
+									<bi:property name="LEFT_MARGIN" value="100"/>
+									<bi:property name="WIDTH" value="40"/>
+									<bi:property name="CSS_CLASS" value="ICON_HINT"/>
+									<bi:property name="ON_CLICK">
+										<bi:value><![CDATA[//g_info_on=!g_info_on;
+//HELP_FUNCTIONS.info_bar_action();
+
+INFO_CONTENT.setHtmlText(" ");
+
+
+/* Application information */
+
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<h3>" + TEXT_POOL.AppInfo + "</h3>");
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<strong>" + TEXT_POOL.Query + ": " + "</strong>" + DS_SALES.getInfo().queryDescription + '  [' + DS_SALES.getInfo().queryTechnicalName + ']' + "<br>");
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<strong>" + TEXT_POOL.InfoProvider + ": " + "</strong>"  + DS_SALES.getInfo().infoProviderDescription + '  [' + DS_SALES.getInfo().infoProviderTechnicalName + ']' + "<br>");
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<strong>" + TEXT_POOL.LastDataUpdate + ": " + "</strong>"  + DS_SALES.getInfo().lastDataUpdate + "<br>");
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<strong>" + TEXT_POOL.LastChangedAt + ": " + "</strong>" + DS_SALES.getInfo().lastChangedAt + "<br>");
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<strong>" + TEXT_POOL.CurrentUser + ": " + "</strong>" + DS_SALES.getInfo().user + "<br>");
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<strong>" + TEXT_POOL.LastRefresh + ": " + "</strong>" + DS_SALES.getInfo().lastRefreshedAt + "<br>");
+
+
+
+// Static Filter
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<h3>" + TEXT_POOL.StaticFilter + "</h3>");
+var filtertext = ' ';
+var dimsrow = DS_SALES.getDimensions();
+dimsrow.forEach(function(element, index) {
+         if (DS_SALES.getStaticFilterText(element.name) != "") {
+    	    filtertext = filtertext + "<strong>" + element.text + ": " + "</strong>" +  DS_SALES.getStaticFilterText(element.name) +"<br>";             
+         }
+});
+if (filtertext.length > 0) 
+{
+ 	   INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + filtertext);
+}     
+else { INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + TEXT_POOL.NoStaticFilterValue);
+} 
+
+
+// Varibales
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<h3>" + TEXT_POOL.Variables + "</h3>");
+var variabletext = ' ';
+var variables = DS_SALES.getVariables();
+variables.forEach(function(element, index) {
+	 if (DS_SALES.getVariableValueText(element.name) != "") {
+        variabletext = variabletext + "<strong>" + element.text + ": " + "</strong>" + DS_SALES.getVariableValueText(element.name) + "<br>";
+     }
+});
+if (variabletext.length > 1) {
+	INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + variabletext);
+} 
+else { INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + TEXT_POOL.NoVariableValue);
+}        
+
+
+// Filter
+INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + "<h3>" + TEXT_POOL.Filter + "</h3>");
+filtertext = ' ';
+dimsrow.forEach(function(element, index) {
+         if (DS_SALES.getFilterText(element.name) != "") {
+    	    filtertext = filtertext + "<strong>" + element.text + ": " + "</strong>" +  DS_SALES.getFilterText(element.name) +"<br>";             
+         }
+});
+if (filtertext.length > 1) 
+{
+ 	   INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + filtertext);
+}    
+else { INFO_CONTENT.setHtmlText(INFO_CONTENT.getHtmlText() + TEXT_POOL.NoFilterValue);
+}        
+
+PANEL_DIALOG.setVisible(true);
+PANEL_INFO.setVisible(true);
+g_dialog = 'INFO';]]></bi:value>
+									</bi:property>
+									<bi:property name="TOOLTIP" value="Info"/>
+									<bi:property name="HEIGHT" value="40"/>
+								</bi:component>
+								<bi:component name="BUTTON_HEADER_FILTER" type="BUTTON_COMPONENT">
+									<bi:property name="LEFT_MARGIN" value="auto"/>
+									<bi:property name="WIDTH" value="40"/>
+									<bi:property name="CSS_CLASS" value="ICON_FILTER"/>
+									<bi:property name="ON_CLICK">
+										<bi:value><![CDATA[g_filter_on=!g_filter_on;
+HELP_FUNCTIONS.filter_bar_action();]]></bi:value>
+									</bi:property>
+									<bi:property name="RIGHT_MARGIN" value="0"/>
+									<bi:property name="BOTTOM_MARGIN" value="0"/>
+									<bi:property name="HEIGHT" value="auto"/>
+								</bi:component>
+							</bi:component>
+						</bi:component>
+						<bi:component name="BODY" type="PANEL_COMPONENT">
+							<bi:property name="TOP_MARGIN" value="61"/>
+							<bi:property name="RIGHT_MARGIN" value="0"/>
+							<bi:property name="BOTTOM_MARGIN" value="40"/>
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="HEIGHT" value="auto"/>
+							<bi:property name="CSS_STYLE" value="background-color: white;"/>
+							<bi:component name="PANEL_DATE_FILTER_AREA" type="PANEL_COMPONENT">
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="1"/>
+								<bi:property name="HEIGHT" value="60"/>
+								<bi:property name="TOP_MARGIN" value="-2"/>
+								<bi:component name="PANEL_DATE_FILTER_AREA_BACKGROUND" type="TEXT_COMPONENT">
+									<bi:property name="TOP_MARGIN" value="1"/>
+									<bi:property name="RIGHT_MARGIN" value="0"/>
+									<bi:property name="BOTTOM_MARGIN" value="0"/>
+									<bi:property name="WIDTH" value="auto"/>
+									<bi:property name="HEIGHT" value="auto"/>
+								</bi:component>
+								<bi:component name="DATERANGESLIDER" type="org_scn_community_basics_DateRangeSlider">
+									<bi:property name="TOP_MARGIN" value="-30"/>
+									<bi:property name="WIDTH" value="800"/>
+									<bi:property name="DMin" value="20140101"/>
+									<bi:property name="DMax" value="20151231"/>
+									<bi:property name="DValue" value="20140701"/>
+									<bi:property name="DValue2" value="20150630"/>
+									<bi:property name="onChange">
+										<bi:value><![CDATA[var A = DATERANGESLIDER.getValue().substring(0,4);
+var B = DATERANGESLIDER.getValue().substring(4,6);
+var C = A + B;
+
+DATE_START.setText(C);
+
+var x = DATERANGESLIDER.getValue2().substring(0,4);
+var y = DATERANGESLIDER.getValue2().substring(4,6);
+var z = x + y;
+
+DATE_END.setText(z);
+
+DS_SALES.setFilter("YEAR_MONTH", {
+	"low": DATE_START.getText(), 
+	"high": DATE_END.getText()
+});]]></bi:value>
+									</bi:property>
+									<bi:property name="totalUnits" value="24"/>
+									<bi:property name="DLangFormat" value="X"/>
+									<bi:property name="DLangStyle" value="medium"/>
+									<bi:property name="HEIGHT" value="auto"/>
+									<bi:property name="BOTTOM_MARGIN" value="-1"/>
+									<bi:property name="DLangPattern" value="MM.YYYY"/>
+									<bi:property name="LEFT_MARGIN" value="50"/>
+									<bi:property name="CSS_CLASS" value="removeMarkers changeLine"/>
+								</bi:component>
+							</bi:component>
+							<bi:component name="BODY_INNER" type="PANEL_COMPONENT">
+								<bi:property name="TOP_MARGIN" value="58"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="BOTTOM_MARGIN" value="0"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="HEIGHT" value="auto"/>
+								<bi:property name="CSS_STYLE" value="&#13;&#10;border-top: 1px solid #C3C3C3 !important;"/>
+								<bi:component name="PANEL_BODY" type="PANEL_COMPONENT">
+									<bi:property name="LEFT_MARGIN" value="330"/>
+									<bi:property name="RIGHT_MARGIN" value="0"/>
+									<bi:property name="BOTTOM_MARGIN" value="0"/>
+									<bi:property name="WIDTH" value="auto"/>
+									<bi:property name="HEIGHT" value="auto"/>
+									<bi:property name="TOP_MARGIN" value="40"/>
+									<bi:component name="PANEL_DETAILS" type="PANEL_COMPONENT">
+										<bi:property name="WIDTH" value="auto"/>
+										<bi:property name="RIGHT_MARGIN" value="0"/>
+										<bi:property name="HEIGHT" value="auto"/>
+										<bi:property name="BOTTOM_MARGIN" value="4"/>
+										<bi:property name="CSS_CLASS" value="myBackgroundWhite"/>
+										<bi:component name="PANEL_DETAILS_IN" type="PANEL_COMPONENT">
+											<bi:property name="RIGHT_MARGIN" value="0"/>
+											<bi:property name="BOTTOM_MARGIN" value="0"/>
+											<bi:property name="WIDTH" value="auto"/>
+											<bi:property name="HEIGHT" value="auto"/>
+											<bi:property name="CSS_CLASS" value="myBackgroundWhite"/>
+											<bi:component name="PANEL_DETAILS_CROSSTAB" type="PANEL_COMPONENT">
+												<bi:property name="WIDTH" value="auto"/>
+												<bi:property name="HEIGHT" value="auto"/>
+												<bi:property name="RIGHT_MARGIN" value="0"/>
+												<bi:property name="BOTTOM_MARGIN" value="0"/>
+												<bi:property name="VISIBLE" value=""/>
+												<bi:component name="CROSSTAB_CONTENT" type="PANEL_COMPONENT">
+													<bi:property name="RIGHT_MARGIN" value="0"/>
+													<bi:property name="BOTTOM_MARGIN" value="0"/>
+													<bi:property name="WIDTH" value="auto"/>
+													<bi:property name="HEIGHT" value="auto"/>
+													<bi:property name="DESIGNER_VISIBLE" value=""/>
+													<bi:component name="CROSSTAB" type="CROSSTAB_COMPONENT">
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="HEIGHT" value="auto"/>
+														<bi:property name="RIGHT_MARGIN" value="0"/>
+														<bi:property name="BOTTOM_MARGIN" value="0"/>
+														<bi:property name="CROSSTAB_DISPLAY_ALWAYS_FILL" value="X"/>
+														<bi:property name="CROSSTAB_ENABLE_SORTING" value=""/>
+														<bi:property name="CSS_CLASS" value="myCrosstab"/>
+														<bi:property name="CROSSTAB_ENABLE_SELECTION" value="X"/>
+														<bi:property name="CROSSTAB_SELECTION_SPACE" value="COL"/>
+														<bi:property name="DATA_SOURCE_ALIAS_REF" value="DS_SALES"/>
+													</bi:component>
+												</bi:component>
+											</bi:component>
+											<bi:component name="PANEL_DETAILS_CHART" type="PANEL_COMPONENT">
+												<bi:property name="WIDTH" value="auto"/>
+												<bi:property name="HEIGHT" value="auto"/>
+												<bi:property name="RIGHT_MARGIN" value="0"/>
+												<bi:property name="VISIBLE" value=""/>
+												<bi:property name="BOTTOM_MARGIN" value="0"/>
+												<bi:component name="CHART_CONTENT" type="PANEL_COMPONENT">
+													<bi:property name="RIGHT_MARGIN" value="0"/>
+													<bi:property name="BOTTOM_MARGIN" value="0"/>
+													<bi:property name="WIDTH" value="auto"/>
+													<bi:property name="HEIGHT" value="auto"/>
+													<bi:property name="TOP_MARGIN" value="33"/>
+													<bi:component name="CHART" type="CHART_COMPONENT">
+														<bi:property name="TOP_MARGIN" value="2"/>
+														<bi:property name="DATA_SOURCE_ALIAS_REF" value="DS_SALES"/>
+														<bi:property name="TYPE" type="CHOICE" value="VERTICAL_STACKED_BAR">
+															<bi:property name="VERTICAL_STACKED_BAR">
+																<bi:property name="properties" value="">
+																	<bi:property name="yAxis" value="">
+																		<bi:property name="scale" value="">
+																			<bi:property name="fixedRange" value="X"/>
+																		</bi:property>
+																	</bi:property>
+																	<bi:property name="interaction" value="">
+																		<bi:property name="selectability" value="">
+																			<bi:property name="mode" value="none"/>
+																		</bi:property>
+																	</bi:property>
+																</bi:property>
+															</bi:property>
+														</bi:property>
+														<bi:property name="ADDITIONAL_PROPERTIES">
+															<bi:value><![CDATA[{"dataSeriesFormat":{"data":["#748CB2","#e46229"],"changedData":{"1":"#e46229"}}}]]></bi:value>
+														</bi:property>
+														<bi:property name="CHART_BACKGROUNDCOLOR" value="{&quot;colorValue&quot;:&quot;&quot;,&quot;colorValidValues&quot;:[null,&quot;Transparent&quot;],&quot;selectedValidValue&quot;:[null,&quot;No Fill&quot;],&quot;selectedValue&quot;:&quot;No Fill&quot;}"/>
+														<bi:property name="RIGHT_MARGIN" value="10"/>
+														<bi:property name="BOTTOM_MARGIN" value="0"/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="HEIGHT" value="auto"/>
+														<bi:property name="DATA_SELECTION">
+															<bi:value><![CDATA[{"(MEASURES_DIMENSION)":["SALES_VALUE","LOST_VALUE"]}]]></bi:value>
+														</bi:property>
+														<bi:property name="ON_SELECT">
+															<bi:value><![CDATA[//LISTBOX_1.removeAllItems();
+//
+//var arr = CHART.getSelectedMembers("YEAR_MONTH");
+//
+//var text = "";
+//arr.forEach(function(element, index) {
+//  LISTBOX_1.addItem(element.internalKey, element.internalKey);
+//  text = text + ","+ element.internalKey;
+//});
+//
+//var intarray = text.split(",");
+//
+//LISTBOX_1.sort(true);
+//
+//LISTBOX_1.setSelectedValues(intarray);
+//
+//DS_SALES.setFilter("YEAR_MONTH", LISTBOX_1.getSelectedValues()); 
+//
+//var daterange =  LISTBOX_1.getSelectedValues();
+//
+//var counter = 1;
+//  	var a = "";
+//	var b = "";
+//	var c = "";
+//	
+//	var x = "";
+//	var y = "";
+//	var z = "";
+//
+//daterange.forEach(function(element, index) {
+//  if ((counter == 1) ) {
+//  	var l_a = element.split(".");  	
+//  	l_a.forEach(function(element, index) {
+//  	 a = a + element;
+//  	});
+//	c = a + "01";
+//	counter = 2;
+//  } else {
+//  	x ="";
+//  	var l_b = element.split(".");  	
+//  	l_b.forEach(function(element, index) {
+//  	 x = x + element;
+//  	});
+//	z = x + "30";
+//  }
+//});
+//
+//DATE_START.setText(c);
+//DATERANGESLIDER.setValue(c);
+//
+//DATE_END.setText(z);
+//if (z != " ") {
+//	DATERANGESLIDER.setValue2(z);
+//} else 
+//{
+//	DATERANGESLIDER.setValue2(c);
+//}]]></bi:value>
+														</bi:property>
+													</bi:component>
+													<bi:component name="LISTBOX_1" type="LISTBOX_COMPONENT">
+														<bi:property name="VISIBLE" value=""/>
+														<bi:property name="MULTI_SELECTION" value="X"/>
+													</bi:component>
+												</bi:component>
+												<bi:component name="PANEL_RADIOBUTTONS" type="PANEL_COMPONENT">
+													<bi:property name="HEIGHT" value="33"/>
+													<bi:property name="WIDTH" value="auto"/>
+													<bi:property name="RIGHT_MARGIN" value="0"/>
+													<bi:property name="CSS_CLASS" value="myHeaderBackground"/>
+													<bi:component name="RADIOBUTTONGROUP" type="RADIOBUTTONGROUP_COMPONENT">
+														<bi:property name="ITEMS" type="ORDEREDLIST">
+															<bi:property name="SELECTION_ITEM" index="0">
+																<bi:property name="VALUE" value="ALL"/>
+																<bi:property name="TEXT" value="Sales / Lost Deals"/>
+																<bi:property name="SELECTED" value="X"/>
+															</bi:property>
+															<bi:property name="SELECTION_ITEM" index="1">
+																<bi:property name="VALUE" value="0"/>
+																<bi:property name="TEXT" value="Lost Deals per Reason"/>
+															</bi:property>
+															<bi:property name="SELECTION_ITEM" index="2">
+																<bi:property name="VALUE" value="1"/>
+																<bi:property name="TEXT" value="Lost Deals Reason Price"/>
+															</bi:property>
+															<bi:property name="SELECTION_ITEM" index="3">
+																<bi:property name="VALUE" value="2"/>
+																<bi:property name="TEXT" value="Lost Deals Reason Service"/>
+															</bi:property>
+															<bi:property name="SELECTION_ITEM" index="4">
+																<bi:property name="VALUE" value="3"/>
+																<bi:property name="TEXT" value="Lost Deals Reason Delivery Time"/>
+															</bi:property>
+														</bi:property>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="COLUMNS" value="5"/>
+														<bi:property name="TOP_MARGIN" value="5"/>
+														<bi:property name="ON_SELECT">
+															<bi:value><![CDATA[var selected_measure = RADIOBUTTONGROUP.getSelectedValue();
+
+if (selected_measure == "ALL") {
+	
+	DS_SALES.clearFilter("REASON_LOST_DEALS");
+	DS_SALES.removeDimension("REASON_LOST_DEALS");
+	CHART.setDataSelection({"(MEASURES_DIMENSION)":["SALES_VALUE","LOST_VALUE"]});
+
+	}
+// LOST DEALS
+if (selected_measure == "0") {
+	DS_SALES.moveDimensionAfter("REASON_LOST_DEALS", "Keyfigures");
+	DS_SALES.setFilter("REASON_LOST_DEALS", ["1", "2", "3"]);
+	CHART.setDataSelection({"(MEASURES_DIMENSION)":"LOST_VALUE"});
+}	
+	
+// PRICE
+if (selected_measure == "1") {
+	DS_SALES.setFilter("REASON_LOST_DEALS", "1");
+	DS_SALES.removeDimension("REASON_LOST_DEALS");
+	CHART.setDataSelection({"(MEASURES_DIMENSION)":"LOST_VALUE"});
+}
+		
+
+// SERVICE
+if (selected_measure == "2") {
+	DS_SALES.setFilter("REASON_LOST_DEALS", "2");
+	DS_SALES.removeDimension("REASON_LOST_DEALS");
+	CHART.setDataSelection({"(MEASURES_DIMENSION)":"LOST_VALUE"});
+}
+
+// DELIVERY TIME
+if (selected_measure == "3") {
+	DS_SALES.setFilter("REASON_LOST_DEALS", "3");	
+	DS_SALES.removeDimension("REASON_LOST_DEALS");
+	CHART.setDataSelection({"(MEASURES_DIMENSION)":"LOST_VALUE"});
+}]]></bi:value>
+														</bi:property>
+														<bi:property name="RIGHT_MARGIN" value="10"/>
+														<bi:property name="LEFT_MARGIN" value="10"/>
+														<bi:property name="CSS_CLASS" value="myTextright"/>
+													</bi:component>
+												</bi:component>
+											</bi:component>
+											<bi:component name="PANEL_DETAILS_CHART_TABLE" type="GRID_LAYOUT_COMPONENT">
+												<bi:property name="COLUMN_SETTINGS_LIST" type="ORDEREDLIST" value="">
+													<bi:property name="COLUMN_WIDTH" index="0" value="1"/>
+												</bi:property>
+												<bi:property name="ROW_SETTINGS_LIST" type="ORDEREDLIST" value="">
+													<bi:property name="ROW_HEIGHT" index="0" value="1"/>
+													<bi:property name="ROW_HEIGHT" index="1" value="1"/>
+												</bi:property>
+												<bi:property name="BOTTOM_MARGIN" value="0"/>
+												<bi:property name="RIGHT_MARGIN" value="0"/>
+												<bi:component name="GRID_CELL_1" type="GRID_CELL_COMPONENT">
+													<bi:component name="CHART_SPLIT_CONTENT" type="PANEL_COMPONENT">
+														<bi:property name="RIGHT_MARGIN" value="0"/>
+														<bi:property name="BOTTOM_MARGIN" value="0"/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="HEIGHT" value="auto"/>
+														<bi:component name="CHART_SPLIT" type="CHART_COMPONENT">
+															<bi:property name="TOP_MARGIN" value="2"/>
+															<bi:property name="RIGHT_MARGIN" value="2"/>
+															<bi:property name="BOTTOM_MARGIN" value="0"/>
+															<bi:property name="WIDTH" value="auto"/>
+															<bi:property name="HEIGHT" value="auto"/>
+															<bi:property name="TYPE" type="CHOICE" value="DUAL_COMBINATION">
+																<bi:property name="DUAL_COMBINATION">
+																	<bi:property name="properties" value="">
+																		<bi:property name="yAxis2" value="">
+																			<bi:property name="scale" value="">
+																				<bi:property name="fixedRange" value="X"/>
+																				<bi:property name="maxValue" value=""/>
+																			</bi:property>
+																		</bi:property>
+																		<bi:property name="interaction" value="">
+																			<bi:property name="selectability" value="">
+																				<bi:property name="mode" value="none"/>
+																			</bi:property>
+																		</bi:property>
+																	</bi:property>
+																</bi:property>
+															</bi:property>
+															<bi:property name="ADDITIONAL_PROPERTIES">
+																<bi:value><![CDATA[{"dataSeriesFormat":{"data":["#748CB2","#e46229"],"changedData":{"0":"#748CB2","1":"#e46229"}},"plotObjectType":{"data":[["bar","axis1","BILLED_QUANTITY"],["bar","axis1","SALES_VALUE"],["line","axis2","LOST_QUANTITY"],["line","axis2","LOST_VALUE"]],"changedData":{"1":["bar","axis1","SALES_VALUE"]}}}]]></bi:value>
+															</bi:property>
+															<bi:property name="DATA_SOURCE_ALIAS_REF" value="DS_SALES"/>
+														</bi:component>
+													</bi:component>
+												</bi:component>
+												<bi:component name="GRID_CELL_2" type="GRID_CELL_COMPONENT">
+													<bi:component name="CROSSTAB_SLIT_CONTENT" type="PANEL_COMPONENT">
+														<bi:property name="RIGHT_MARGIN" value="0"/>
+														<bi:property name="BOTTOM_MARGIN" value="0"/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="HEIGHT" value="auto"/>
+														<bi:property name="DESIGNER_VISIBLE" value=""/>
+														<bi:component name="CROSSTAB_SPLIT" type="CROSSTAB_COMPONENT">
+															<bi:property name="WIDTH" value="auto"/>
+															<bi:property name="HEIGHT" value="auto"/>
+															<bi:property name="RIGHT_MARGIN" value="0"/>
+															<bi:property name="BOTTOM_MARGIN" value="0"/>
+															<bi:property name="DATA_SOURCE_ALIAS_REF" value="DS_SALES"/>
+															<bi:property name="CROSSTAB_DISPLAY_ALWAYS_FILL" value="X"/>
+															<bi:property name="CROSSTAB_ENABLE_SORTING" value=""/>
+															<bi:property name="LEFT_MARGIN" value="-1"/>
+														</bi:component>
+													</bi:component>
+												</bi:component>
+											</bi:component>
+											<bi:component name="SETTINGS" type="PANEL_COMPONENT">
+												<bi:property name="BOTTOM_MARGIN" value="0"/>
+												<bi:property name="WIDTH" value="200"/>
+												<bi:property name="HEIGHT" value="auto"/>
+												<bi:property name="VISIBLE" value=""/>
+												<bi:property name="CSS_CLASS" value="myBorderRight myBackgroundWhite"/>
+												<bi:property name="DESIGNER_VISIBLE" value=""/>
+												<bi:component name="TABLE_SETTINGS" type="PANEL_COMPONENT">
+													<bi:property name="WIDTH" value="auto"/>
+													<bi:property name="HEIGHT" value="auto"/>
+													<bi:property name="RIGHT_MARGIN" value="0"/>
+													<bi:property name="BOTTOM_MARGIN" value="0"/>
+													<bi:property name="DESIGNER_VISIBLE" value=""/>
+													<bi:component name="TABLE_SETTINGS_TXT" type="TEXT_COMPONENT">
+														<bi:property name="TEXT" value="Crosstab Settings"/>
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="HEIGHT" value="20"/>
+														<bi:property name="CSS_STYLE" value="font-weight: bold; "/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="RIGHT_MARGIN" value="4"/>
+													</bi:component>
+													<bi:component name="TABLE_SETTINGS_SWAP" type="BUTTON_COMPONENT">
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="ON_CLICK">
+															<bi:value><![CDATA[var colDims = DS_SALES.getDimensions(Axis.COLUMNS);
+var rowDims = DS_SALES.getDimensions(Axis.ROWS);
+colDims.forEach(function(element, index) {
+  DS_SALES.moveDimensionToRows(element.name);
+});
+rowDims.forEach(function(element, index) {
+  DS_SALES.moveDimensionToColumns(element.name);
+});]]></bi:value>
+														</bi:property>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="TOOLTIP" value="Swap Axes for Data Source"/>
+														<bi:property name="TOP_MARGIN" value="32"/>
+														<bi:property name="TEXT" value="Swap Axes"/>
+														<bi:property name="RIGHT_MARGIN" value="12"/>
+													</bi:component>
+													<bi:component name="TABLE_SETTINGS_EXCEPTIONS" type="BUTTON_COMPONENT">
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="ON_CLICK">
+															<bi:value><![CDATA[if (CROSSTAB.isConditionalFormattingVisible() == true) {
+	CROSSTAB.setConditionalFormattingVisible(false);
+	CROSSTAB_SPLIT.setConditionalFormattingVisible(false);
+	TABLE_SETTINGS_EXCEPTIONS.setText(TEXT_POOL.ExcShow);
+	TABLE_SETTINGS_EXCEPTIONS.setTooltip(TEXT_POOL.ExcShow);
+	}
+ else 
+ {
+	CROSSTAB.setConditionalFormattingVisible(true);
+	CROSSTAB_SPLIT.setConditionalFormattingVisible(true);
+	TABLE_SETTINGS_EXCEPTIONS.setText(TEXT_POOL.ExcHide);
+	TABLE_SETTINGS_EXCEPTIONS.setTooltip(TEXT_POOL.ExcHide);
+}
+]]></bi:value>
+														</bi:property>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="TOOLTIP" value="Show Exceptions"/>
+														<bi:property name="TOP_MARGIN" value="72"/>
+														<bi:property name="TEXT" value="Show Conditional Formatting"/>
+														<bi:property name="RIGHT_MARGIN" value="12"/>
+													</bi:component>
+												</bi:component>
+												<bi:component name="CHART_SETTINGS" type="PANEL_COMPONENT">
+													<bi:property name="WIDTH" value="auto"/>
+													<bi:property name="HEIGHT" value="auto"/>
+													<bi:property name="RIGHT_MARGIN" value="0"/>
+													<bi:property name="BOTTOM_MARGIN" value="0"/>
+													<bi:component name="CHART_TYPE_PICKER" type="CHART_TYPE_PICKER_COMPONENT">
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="TOP_MARGIN" value="5"/>
+														<bi:property name="RIGHT_MARGIN" value="12"/>
+														<bi:property name="BOTTOM_MARGIN" value="5"/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="CHART_TYPE_PICKER_REF">
+															<bi:value><![CDATA[CHART]]></bi:value>
+														</bi:property>
+														<bi:property name="CHART_TYPE_PICKER_CHANGE">
+															<bi:value><![CDATA[CHART_SPLIT.setChartType(CHART.getChartType());]]></bi:value>
+														</bi:property>
+													</bi:component>
+													<bi:component name="BUTTON_SWAP" type="BUTTON_COMPONENT">
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="ON_CLICK">
+															<bi:value><![CDATA[
+	if ((g_chart_swap == false)) {
+		CHART.swapAxes(true);
+		CHART_SPLIT.swapAxes(true);
+		g_chart_swap = true;
+	} else {
+		CHART.swapAxes(false);
+		CHART_SPLIT.swapAxes(false);  
+		g_chart_swap = false;
+	}
+
+]]></bi:value>
+														</bi:property>
+														<bi:property name="TOP_MARGIN" value="174"/>
+														<bi:property name="TEXT" value="Swap Axes"/>
+														<bi:property name="RIGHT_MARGIN" value="12"/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="VISIBLE" value=""/>
+													</bi:component>
+													<bi:component name="BUTTON_CHART_SHOW_SCALING" type="BUTTON_COMPONENT">
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="ON_CLICK">
+															<bi:value><![CDATA[
+	if ((g_chart_scaling == false)) {
+		CHART.showScalingFactors(true);
+		CHART_SPLIT.showScalingFactors(true);
+		BUTTON_CHART_SHOW_SCALING.setText(TEXT_POOL.ScalingHide);
+		g_chart_scaling = true;
+	} else {
+		CHART.showScalingFactors(false);
+		CHART_SPLIT.showScalingFactors(false);
+		g_chart_scaling = false;
+		BUTTON_CHART_SHOW_SCALING.setText(TEXT_POOL.ScalingShow);
+	}
+]]></bi:value>
+														</bi:property>
+														<bi:property name="TOP_MARGIN" value="214"/>
+														<bi:property name="TEXT" value="Show Scaling Factors"/>
+														<bi:property name="RIGHT_MARGIN" value="12"/>
+														<bi:property name="WIDTH" value="auto"/>
+													</bi:component>
+													<bi:component name="CHART_SETTINGS_LINE" type="TEXT_COMPONENT">
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="RIGHT_MARGIN" value="6"/>
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="TOP_MARGIN" value="150"/>
+														<bi:property name="HEIGHT" value="20"/>
+														<bi:property name="TEXT" value="Chart Settings"/>
+														<bi:property name="CSS_STYLE" value="font-weight: bold; "/>
+													</bi:component>
+													<bi:component name="CB_CHART_ENABLE_X_AXIS_SCALING" type="CHECKBOX_COMPONENT">
+														<bi:property name="TEXT" value="Enable X-Axis Scaling"/>
+														<bi:property name="TOP_MARGIN" value="257"/>
+														<bi:property name="WIDTH" value="200"/>
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="ON_CLICK">
+															<bi:value><![CDATA[if (CB_CHART_ENABLE_Y_AXIS_SCALING.isChecked() == true) {
+	CHART_SETTIGNS_OK.setEnabled(true);
+} else {
+	CHART_SETTIGNS_OK.setEnabled(false);
+	HELP_FUNCTIONS.chart_change_action(INPUT_CHART_AXIS_SCALING_MAX.getValue(), 
+	INPUT_CHART_AXIS_SCALING_MIN.getValue(), 
+	CB_CHART_ENABLE_Y_AXIS_SCALING.isChecked(), 
+	CB_CHART_ENABLE_X_AXIS_SCALING.isChecked()
+);
+}]]></bi:value>
+														</bi:property>
+													</bi:component>
+													<bi:component name="CB_CHART_ENABLE_Y_AXIS_SCALING" type="CHECKBOX_COMPONENT">
+														<bi:property name="TEXT" value="Enable Y-Axis Scaling"/>
+														<bi:property name="TOP_MARGIN" value="277"/>
+														<bi:property name="WIDTH" value="200"/>
+														<bi:property name="LEFT_MARGIN" value="12"/>
+														<bi:property name="ON_CLICK">
+															<bi:value><![CDATA[if (CB_CHART_ENABLE_Y_AXIS_SCALING.isChecked() == true) {
+	CHART_SETTIGNS_OK.setEnabled(true);
+} else {
+	CHART_SETTIGNS_OK.setEnabled(false);
+	HELP_FUNCTIONS.chart_change_action(INPUT_CHART_AXIS_SCALING_MAX.getValue(), 
+	INPUT_CHART_AXIS_SCALING_MIN.getValue(), 
+	CB_CHART_ENABLE_Y_AXIS_SCALING.isChecked(), 
+	CB_CHART_ENABLE_X_AXIS_SCALING.isChecked()
+);
+}]]></bi:value>
+														</bi:property>
+													</bi:component>
+													<bi:component name="TEXT_CHART_AXIS_SCALING_MIN" type="TEXT_COMPONENT">
+														<bi:property name="TEXT" value="Minimum"/>
+														<bi:property name="LEFT_MARGIN" value="34"/>
+														<bi:property name="TOP_MARGIN" value="304"/>
+														<bi:property name="WIDTH" value="70"/>
+													</bi:component>
+													<bi:component name="INPUT_CHART_AXIS_SCALING_MIN" type="INPUTFIELD_COMPONENT">
+														<bi:property name="LEFT_MARGIN" value="100"/>
+														<bi:property name="TOP_MARGIN" value="304"/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="RIGHT_MARGIN" value="12"/>
+														<bi:property name="VALUE" value="0"/>
+													</bi:component>
+													<bi:component name="TEXT_CHART_AXIS_SCALING_MAX" type="TEXT_COMPONENT">
+														<bi:property name="TEXT" value="Maximum"/>
+														<bi:property name="LEFT_MARGIN" value="34"/>
+														<bi:property name="TOP_MARGIN" value="330"/>
+													</bi:component>
+													<bi:component name="INPUT_CHART_AXIS_SCALING_MAX" type="INPUTFIELD_COMPONENT">
+														<bi:property name="LEFT_MARGIN" value="100"/>
+														<bi:property name="TOP_MARGIN" value="330"/>
+														<bi:property name="WIDTH" value="auto"/>
+														<bi:property name="RIGHT_MARGIN" value="12"/>
+														<bi:property name="VALUE" value="0"/>
+													</bi:component>
+													<bi:component name="CHART_SETTIGNS_OK" type="BUTTON_COMPONENT">
+														<bi:property name="TEXT" value="OK"/>
+														<bi:property name="LEFT_MARGIN" value="auto"/>
+														<bi:property name="TOP_MARGIN" value="360"/>
+														<bi:property name="RIGHT_MARGIN" value="8"/>
+														<bi:property name="WIDTH" value="40"/>
+														<bi:property name="ON_CLICK">
+															<bi:value><![CDATA[HELP_FUNCTIONS.chart_change_action(INPUT_CHART_AXIS_SCALING_MAX.getValue(), 
+	INPUT_CHART_AXIS_SCALING_MIN.getValue(), 
+	CB_CHART_ENABLE_Y_AXIS_SCALING.isChecked(), 
+	CB_CHART_ENABLE_X_AXIS_SCALING.isChecked()
+);]]></bi:value>
+														</bi:property>
+														<bi:property name="ENABLED" value=""/>
+													</bi:component>
+												</bi:component>
+											</bi:component>
+										</bi:component>
+									</bi:component>
+								</bi:component>
+								<bi:component name="PANEL_BODY_LEFT" type="PANEL_COMPONENT">
+									<bi:property name="WIDTH" value="330"/>
+									<bi:property name="HEIGHT" value="auto"/>
+									<bi:property name="BOTTOM_MARGIN" value="-8"/>
+									<bi:property name="TOP_MARGIN" value="39"/>
+									<bi:property name="CSS_CLASS" value="myBorderRight"/>
+									<bi:property name="DESIGNER_VISIBLE" value=""/>
+									<bi:component name="NAVIGATON_AREA" type="NAVIGATIONPANEL_COMPONENT">
+										<bi:property name="DATA_SOURCE_ALIAS_REF" value="DS_SALES"/>
+										<bi:property name="RIGHT_MARGIN" value="1"/>
+										<bi:property name="BOTTOM_MARGIN" value="10"/>
+										<bi:property name="WIDTH" value="auto"/>
+										<bi:property name="HEIGHT" value="auto"/>
+										<bi:property name="TOP_MARGIN" value="-1"/>
+										<bi:property name="SHOW_MEASURES_SEPARATELY" value="X"/>
+										<bi:property name="CSS_CLASS" value="myNav"/>
+									</bi:component>
+								</bi:component>
+								<bi:component name="PANEL_TOOLBAR" type="PANEL_COMPONENT">
+									<bi:property name="CSS_STYLE" value="border-top: 1px solid #C3C3C3 !important;&#13;&#10;"/>
+									<bi:property name="WIDTH" value="auto"/>
+									<bi:property name="RIGHT_MARGIN" value="2"/>
+									<bi:property name="HEIGHT" value="40"/>
+									<bi:property name="CSS_CLASS" value="myToolbarMenu myToolbar"/>
+									<bi:property name="TOP_MARGIN" value="-2"/>
+									<bi:component name="PANEL_BUTTON_GROUP_NAV" type="PANEL_COMPONENT">
+										<bi:property name="HEIGHT" value="40"/>
+										<bi:property name="WIDTH" value="331"/>
+										<bi:property name="TOP_MARGIN" value="-1"/>
+										<bi:component name="BUTTON_GROUP_NAV_TEXT" type="TEXT_COMPONENT">
+											<bi:property name="TEXT" value="Hide Navigation"/>
+											<bi:property name="WIDTH" value="auto"/>
+											<bi:property name="RIGHT_MARGIN" value="30"/>
+											<bi:property name="HEIGHT" value="40"/>
+											<bi:property name="CSS_CLASS" value="myToolBarText"/>
+											<bi:property name="LEFT_MARGIN" value="8"/>
+											<bi:property name="VISIBLE" value=""/>
+										</bi:component>
+										<bi:component name="BUTTON_NAV_SETTINGS_CLOSE" type="BUTTON_COMPONENT">
+											<bi:property name="LEFT_MARGIN" value="auto"/>
+											<bi:property name="RIGHT_MARGIN" value="0"/>
+											<bi:property name="ON_CLICK">
+												<bi:value><![CDATA[
+	g_navigation_on = !g_navigation_on;
+	HELP_FUNCTIONS.nav_panel_action();
+
+
+
+]]></bi:value>
+											</bi:property>
+											<bi:property name="HEIGHT" value="39"/>
+											<bi:property name="WIDTH" value="30"/>
+											<bi:property name="CSS_CLASS" value="ICON_CLOSE  myToolbarButtonRight"/>
+											<bi:property name="TOOLTIP" value="Hide Navigation"/>
+											<bi:property name="TOP_MARGIN" value="1"/>
+										</bi:component>
+										<bi:component name="BUTTON_NAV_SETTINGS_OPEN" type="BUTTON_COMPONENT">
+											<bi:property name="ON_CLICK">
+												<bi:value><![CDATA[
+	g_navigation_on = !g_navigation_on;
+	HELP_FUNCTIONS.nav_panel_action();
+]]></bi:value>
+											</bi:property>
+											<bi:property name="HEIGHT" value="39"/>
+											<bi:property name="WIDTH" value="30"/>
+											<bi:property name="CSS_CLASS" value="ICON_OPEN myToolbarButtonRight"/>
+											<bi:property name="TOOLTIP" value="Show Navigation"/>
+											<bi:property name="TOP_MARGIN" value="1"/>
+											<bi:property name="VISIBLE" value=""/>
+										</bi:component>
+									</bi:component>
+									<bi:component name="PANEL_BUTTON_GROUP_SETTINGS" type="PANEL_COMPONENT">
+										<bi:property name="HEIGHT" value="40"/>
+										<bi:property name="WIDTH" value="201"/>
+										<bi:property name="TOP_MARGIN" value="-1"/>
+										<bi:property name="LEFT_MARGIN" value="331"/>
+										<bi:component name="BUTTON_CHART_SETTINGS_CLOSE" type="BUTTON_COMPONENT">
+											<bi:property name="LEFT_MARGIN" value="auto"/>
+											<bi:property name="RIGHT_MARGIN" value="0"/>
+											<bi:property name="ON_CLICK">
+												<bi:value><![CDATA[
+	g_settings_on = !g_settings_on;
+	HELP_FUNCTIONS.settings_panel_action();
+
+
+]]></bi:value>
+											</bi:property>
+											<bi:property name="HEIGHT" value="39"/>
+											<bi:property name="WIDTH" value="30"/>
+											<bi:property name="CSS_CLASS" value="ICON_CLOSE myToolbarButtonRight"/>
+											<bi:property name="TOOLTIP" value="Hide Settings"/>
+											<bi:property name="VISIBLE" value=""/>
+											<bi:property name="TOP_MARGIN" value="1"/>
+										</bi:component>
+										<bi:component name="BUTTON_CHART_SETTINGS_OPEN" type="BUTTON_COMPONENT">
+											<bi:property name="ON_CLICK">
+												<bi:value><![CDATA[
+	g_settings_on = !g_settings_on;
+	HELP_FUNCTIONS.settings_panel_action();
+
+
+]]></bi:value>
+											</bi:property>
+											<bi:property name="HEIGHT" value="39"/>
+											<bi:property name="WIDTH" value="30"/>
+											<bi:property name="CSS_CLASS" value="ICON_OPEN myToolbarButtonRight"/>
+											<bi:property name="TOOLTIP" value="Show Settings"/>
+											<bi:property name="TOP_MARGIN" value="1"/>
+										</bi:component>
+									</bi:component>
+									<bi:component name="PANEL_BUTTON_GROUP_VIEW" type="PANEL_COMPONENT">
+										<bi:property name="WIDTH" value="130"/>
+										<bi:property name="LEFT_MARGIN" value="auto"/>
+										<bi:property name="RIGHT_MARGIN" value="0"/>
+										<bi:property name="BOTTOM_MARGIN" value="0"/>
+										<bi:property name="HEIGHT" value="auto"/>
+										<bi:component name="BUTTON_CHART" type="BUTTON_COMPONENT">
+											<bi:property name="LEFT_MARGIN" value="auto"/>
+											<bi:property name="RIGHT_MARGIN" value="40"/>
+											<bi:property name="ON_CLICK">
+												<bi:value><![CDATA[g_display_mode = "CHART";
+PANEL_DETAILS_CHART.setVisible(true);
+PANEL_DETAILS_CROSSTAB.setVisible(false);
+PANEL_DETAILS_CHART_TABLE.setVisible(false);
+
+HELP_FUNCTIONS.display_buttons();
+
+if ((BUTTON_NAV_SETTINGS_CLOSE.isVisible() == true)) {
+	BUTTON_NAV_SETTINGS_CLOSE.onClick();
+} 
+
+if ((BUTTON_CHART_SETTINGS_CLOSE.isVisible() == true)) {
+	BUTTON_CHART_SETTINGS_CLOSE.onClick();
+}
+
+//NAVIGATON_AREA.setDataSource(DS_SALES_CHART);]]></bi:value>
+											</bi:property>
+											<bi:property name="WIDTH" value="40"/>
+											<bi:property name="HEIGHT" value="40"/>
+											<bi:property name="CSS_CLASS" value="ICON_CHART"/>
+											<bi:property name="TOOLTIP" value="Chart"/>
+										</bi:component>
+										<bi:component name="BUTTON_TABLE" type="BUTTON_COMPONENT">
+											<bi:property name="LEFT_MARGIN" value="auto"/>
+											<bi:property name="RIGHT_MARGIN" value="0"/>
+											<bi:property name="ON_CLICK">
+												<bi:value><![CDATA[g_display_mode="TABLE";
+
+PANEL_DETAILS_CHART.setVisible(false);
+PANEL_DETAILS_CROSSTAB.setVisible(true);
+PANEL_DETAILS_CHART_TABLE.setVisible(false);
+DS_SALES.clearFilter("REASON_LOST_DEALS");
+DS_SALES.removeDimension("REASON_LOST_DEALS");
+RADIOBUTTONGROUP.setSelectedValue("ALL");
+
+
+HELP_FUNCTIONS.display_buttons();
+
+//g_nav_tab_second= "OVERVIEW";
+//
+//if (g_nav_tab_first == "ACTUALS") {
+if ((BUTTON_NAV_SETTINGS_OPEN.isVisible() == true)) {
+	BUTTON_NAV_SETTINGS_OPEN.onClick();
+} 
+//} else
+//if ((BUTTON_NAV_SETTINGS_CLOSE.isVisible() == true)) {
+//	BUTTON_NAV_SETTINGS_CLOSE.onClick();
+//} 
+
+if ((BUTTON_CHART_SETTINGS_CLOSE.isVisible() == true)) {
+	BUTTON_CHART_SETTINGS_CLOSE.onClick();
+}
+]]></bi:value>
+											</bi:property>
+											<bi:property name="HEIGHT" value="40"/>
+											<bi:property name="WIDTH" value="40"/>
+											<bi:property name="CSS_CLASS" value="ICON_TABLE"/>
+											<bi:property name="TOOLTIP" value="Crosstab"/>
+										</bi:component>
+										<bi:component name="BUTTON_CHART_TABLE" type="BUTTON_COMPONENT">
+											<bi:property name="LEFT_MARGIN" value="auto"/>
+											<bi:property name="RIGHT_MARGIN" value="80"/>
+											<bi:property name="ON_CLICK">
+												<bi:value><![CDATA[g_display_mode = "CHART_TABLE";
+PANEL_DETAILS_CHART.setVisible(false);
+PANEL_DETAILS_CROSSTAB.setVisible(false);
+PANEL_DETAILS_CHART_TABLE.setVisible(true);
+DS_SALES.clearFilter("REASON_LOST_DEALS");
+DS_SALES.removeDimension("REASON_LOST_DEALS");
+RADIOBUTTONGROUP.setSelectedValue("ALL");
+
+
+HELP_FUNCTIONS.display_buttons();
+
+if (BUTTON_NAV_SETTINGS_CLOSE.isVisible() == true) {
+	BUTTON_NAV_SETTINGS_CLOSE.onClick();
+} 
+
+if (BUTTON_CHART_SETTINGS_CLOSE.isVisible() == true) {
+	BUTTON_CHART_SETTINGS_CLOSE.onClick();
+}]]></bi:value>
+											</bi:property>
+											<bi:property name="HEIGHT" value="40"/>
+											<bi:property name="WIDTH" value="40"/>
+											<bi:property name="CSS_CLASS" value="ICON_CHART_TABLE"/>
+											<bi:property name="TOOLTIP" value="Chart / Crosstab"/>
+										</bi:component>
+									</bi:component>
+								</bi:component>
+							</bi:component>
+						</bi:component>
+						<bi:component name="PANEL_FILTER_AREA" type="PANEL_COMPONENT">
+							<bi:property name="TOP_MARGIN" value="61"/>
+							<bi:property name="RIGHT_MARGIN" value="0"/>
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="HEIGHT" value="200"/>
+							<bi:property name="VISIBLE" value=""/>
+							<bi:property name="CSS_STYLE" value="background-color: white;"/>
+							<bi:component name="FACETFILTER" type="org_scn_community_databound_FacetFilter">
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="HEIGHT" value="auto"/>
+								<bi:property name="DATA_SOURCE_ALIAS_REF" value="DS_FACET_FILTER"/>
+								<bi:property name="DSortingType" value="Value"/>
+								<bi:property name="CSS_CLASS" value="scn-pack-FacetFilter-MarkAnyValue2 changeSelectedBackground"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="BOTTOM_MARGIN" value="5"/>
+								<bi:property name="data" value="{&quot;(MEASURES_DIMENSION)&quot;:&quot;SALES_VALUE&quot;}"/>
+								<bi:property name="DSortingDirection" value="Descending"/>
+								<bi:property name="DContentMode" value="Custom"/>
+								<bi:property name="DCustomDimensions" value="[&quot;REGION&quot;,&quot;AREA_CODE&quot;,&quot;CUSTOMER&quot;]"/>
+							</bi:component>
+						</bi:component>
+						<bi:component name="FOOTER" type="PANEL_COMPONENT">
+							<bi:property name="HEIGHT" value="40"/>
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="RIGHT_MARGIN" value="0"/>
+							<bi:property name="BOTTOM_MARGIN" value="2"/>
+							<bi:property name="TOP_MARGIN" value="auto"/>
+							<bi:property name="CSS_CLASS" value="myFooterBackground"/>
+							<bi:component name="BUTTON_ACTION" type="BUTTON_COMPONENT">
+								<bi:property name="CSS_CLASS" value="myFooterBarAction ICON_ACTION"/>
+								<bi:property name="TOP_MARGIN" value="auto"/>
+								<bi:property name="LEFT_MARGIN" value="auto"/>
+								<bi:property name="WIDTH" value="40"/>
+								<bi:property name="RIGHT_MARGIN" value="6"/>
+								<bi:property name="TOOLTIP" value="Actions"/>
+								<bi:property name="ON_CLICK">
+									<bi:value><![CDATA[g_dialog = 'ACTIONS_MENU';
+PANEL_DIALOG.setVisible(true);
+PANEL_ACTION_MENU.setVisible(true);]]></bi:value>
+								</bi:property>
+								<bi:property name="HEIGHT" value="36"/>
+								<bi:property name="BOTTOM_MARGIN" value="2"/>
+							</bi:component>
+							<bi:component name="POWERED_BY" type="TEXT_COMPONENT">
+								<bi:property name="TEXT" value="POWERED BY SAP DESIGN STUIDIO"/>
+								<bi:property name="TOP_MARGIN" value="auto"/>
+								<bi:property name="LEFT_MARGIN" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="60"/>
+								<bi:property name="BOTTOM_MARGIN" value="14"/>
+								<bi:property name="WIDTH" value="280"/>
+								<bi:property name="HEIGHT" value="20"/>
+								<bi:property name="CSS_STYLE" value="font-size: 10px;&#13;&#10;text-align: right;&#13;&#10;line-height: 30px;&#13;&#10;color: white;"/>
+							</bi:component>
+						</bi:component>
+					</bi:component>
+				</bi:component>
+				<bi:component name="PANEL_DIALOG" type="PANEL_COMPONENT">
+					<bi:property name="WIDTH" value="auto"/>
+					<bi:property name="RIGHT_MARGIN" value="0"/>
+					<bi:property name="HEIGHT" value="auto"/>
+					<bi:property name="BOTTOM_MARGIN" value="1"/>
+					<bi:property name="ON_CLICK">
+						<bi:value><![CDATA[if (! g_dialog_click) {
+
+if (g_dialog == 'INFO') {
+	PANEL_INFO.setVisible(false);
+
+}
+else if (g_dialog == 'ACTIONS_MENU') {
+	PANEL_ACTION_MENU.setVisible(false);
+	
+
+} 
+g_dialog = '';
+
+PANEL_DIALOG.setVisible(false);
+
+}
+g_dialog_click = false;]]></bi:value>
+					</bi:property>
+					<bi:property name="VISIBLE" value=""/>
+					<bi:property name="TOP_MARGIN" value="70"/>
+					<bi:property name="DESIGNER_VISIBLE" value=""/>
+					<bi:component name="PANEL_BODY_DIALOG" type="PANEL_COMPONENT">
+						<bi:property name="BOTTOM_MARGIN" value="0"/>
+						<bi:property name="TOP_MARGIN" value="90"/>
+						<bi:property name="RIGHT_MARGIN" value="0"/>
+						<bi:property name="HEIGHT" value="auto"/>
+						<bi:property name="WIDTH" value="auto"/>
+					</bi:component>
+					<bi:component name="PANEL_ACTION_MENU" type="PANEL_COMPONENT">
+						<bi:property name="WIDTH" value="125"/>
+						<bi:property name="RIGHT_MARGIN" value="70"/>
+						<bi:property name="HEIGHT" value="90"/>
+						<bi:property name="LEFT_MARGIN" value="auto"/>
+						<bi:property name="VISIBLE" value=""/>
+						<bi:property name="ON_CLICK">
+							<bi:value><![CDATA[g_dialog_click = true;]]></bi:value>
+						</bi:property>
+						<bi:property name="CSS_CLASS" value="myDialog"/>
+						<bi:property name="BOTTOM_MARGIN" value="60"/>
+						<bi:property name="TOP_MARGIN" value="auto"/>
+						<bi:component name="PANEL_ACTION_MENU_CONTENT" type="PANEL_COMPONENT">
+							<bi:property name="HEIGHT" value="auto"/>
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="RIGHT_MARGIN" value="0"/>
+							<bi:property name="BOTTOM_MARGIN" value="0"/>
+							<bi:property name="CSS_CLASS" value="myToolbarDropDownMenuDown"/>
+							<bi:component name="BUTTON_EXPORT_EXCEL" type="BUTTON_COMPONENT">
+								<bi:property name="TEXT" value="Export to Mircorsoft Excel"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="ON_CLICK">
+									<bi:value><![CDATA[APPLICATION.export(ExportType.EXCEL_xlsx);
+PANEL_DIALOG.setVisible(false);
+]]></bi:value>
+								</bi:property>
+								<bi:property name="CSS_CLASS" value="myButtonFooterPopup"/>
+							</bi:component>
+							<bi:component name="BUTTON_EXPORT_CSV" type="BUTTON_COMPONENT">
+								<bi:property name="TEXT" value="Export to CSV"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="TOP_MARGIN" value="30"/>
+								<bi:property name="ON_CLICK">
+									<bi:value><![CDATA[APPLICATION.export(ExportType.CSV);
+PANEL_DIALOG.setVisible(false);
+]]></bi:value>
+								</bi:property>
+								<bi:property name="CSS_CLASS" value="myButtonFooterPopup"/>
+							</bi:component>
+							<bi:component name="BUTTON_PRINT" type="BUTTON_COMPONENT">
+								<bi:property name="TEXT" value="Print"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="TOP_MARGIN" value="60"/>
+								<bi:property name="ON_CLICK">
+									<bi:value><![CDATA[APPLICATION.print();
+PANEL_DIALOG.setVisible(false);
+]]></bi:value>
+								</bi:property>
+								<bi:property name="CSS_CLASS" value="myButtonFooterPopup"/>
+							</bi:component>
+						</bi:component>
+					</bi:component>
+					<bi:component name="PANEL_INFO" type="PANEL_COMPONENT">
+						<bi:property name="WIDTH" value="auto"/>
+						<bi:property name="HEIGHT" value="auto"/>
+						<bi:property name="CSS_CLASS" value="sapUiDlg"/>
+						<bi:property name="TOP_MARGIN" value="10"/>
+						<bi:property name="LEFT_MARGIN" value="100"/>
+						<bi:property name="VISIBLE" value=""/>
+						<bi:property name="ON_CLICK">
+							<bi:value><![CDATA[g_dialog_click = true;]]></bi:value>
+						</bi:property>
+						<bi:property name="RIGHT_MARGIN" value="100"/>
+						<bi:property name="BOTTOM_MARGIN" value="80"/>
+						<bi:component name="PANEL_INFO_TITLE" type="PANEL_COMPONENT">
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="RIGHT_MARGIN" value="1"/>
+							<bi:property name="CSS_CLASS" value="myDialogTitle"/>
+							<bi:property name="HEIGHT" value="30"/>
+							<bi:component name="INFO_TITLE" type="TEXT_COMPONENT">
+								<bi:property name="TEXT" value="Information"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="HEIGHT" value="auto"/>
+								<bi:property name="BOTTOM_MARGIN" value="2"/>
+								<bi:property name="CSS_CLASS" value="myDialogTitleText"/>
+								<bi:property name="TOP_MARGIN" value="5"/>
+							</bi:component>
+						</bi:component>
+						<bi:component name="PANEL_INFO_CONTENT" type="PANEL_COMPONENT">
+							<bi:property name="TOP_MARGIN" value="32"/>
+							<bi:property name="BOTTOM_MARGIN" value="42"/>
+							<bi:property name="HEIGHT" value="auto"/>
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="RIGHT_MARGIN" value="0"/>
+							<bi:property name="LEFT_MARGIN" value="8"/>
+							<bi:component name="INFO_CONTENT" type="com_sap_ip_bi_FormattedTextView">
+								<bi:property name="LEFT_MARGIN" value="0"/>
+								<bi:property name="TOP_MARGIN" value="0"/>
+								<bi:property name="RIGHT_MARGIN" value="0"/>
+								<bi:property name="BOTTOM_MARGIN" value="0"/>
+								<bi:property name="WIDTH" value="auto"/>
+								<bi:property name="HEIGHT" value="auto"/>
+								<bi:property name="CSS_CLASS" value="myTextScroll"/>
+							</bi:component>
+						</bi:component>
+						<bi:component name="PANEL_FOOTER" type="PANEL_COMPONENT">
+							<bi:property name="TOP_MARGIN" value="auto"/>
+							<bi:property name="WIDTH" value="auto"/>
+							<bi:property name="RIGHT_MARGIN" value="0"/>
+							<bi:property name="BOTTOM_MARGIN" value="0"/>
+							<bi:property name="CSS_CLASS" value="myFooterBackground"/>
+							<bi:property name="HEIGHT" value="40"/>
+							<bi:component name="BUTTON_3" type="BUTTON_COMPONENT">
+								<bi:property name="TEXT" value="Close"/>
+								<bi:property name="LEFT_MARGIN" value="auto"/>
+								<bi:property name="TOP_MARGIN" value="5"/>
+								<bi:property name="RIGHT_MARGIN" value="5"/>
+								<bi:property name="CSS_CLASS" value="myFooterBarActionRight"/>
+								<bi:property name="ON_CLICK">
+									<bi:value><![CDATA[PANEL_DIALOG.setVisible(false);
+PANEL_INFO.setVisible(false);
+]]></bi:value>
+								</bi:property>
+							</bi:component>
+						</bi:component>
+					</bi:component>
+				</bi:component>
+			</bi:component>
+		</bi:component>
+		<bi:component name="TEXT_POOL" type="TEXT_POOL_COMPONENT">
+			<bi:property name="TEXT_POOL_ENTRIES" type="ORDEREDLIST">
+				<bi:property name="TEXT_POOL_ENTRY" index="0">
+					<bi:property name="KEY" value="FilteredBy"/>
+					<bi:property name="TEXT" value="Filtered by: {0}"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="1">
+					<bi:property name="KEY" value="Filtered"/>
+					<bi:property name="TEXT" value="Filter ("/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="2">
+					<bi:property name="KEY" value="NoFilters"/>
+					<bi:property name="TEXT" value="Filter (0)"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="3">
+					<bi:property name="KEY" value="ExcHide"/>
+					<bi:property name="TEXT" value="Hide Exceptions"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="4">
+					<bi:property name="KEY" value="ExcShow"/>
+					<bi:property name="TEXT" value="Show Exceptions"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="5">
+					<bi:property name="KEY" value="ScalingHide"/>
+					<bi:property name="TEXT" value="Hide Scaling Factors"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="6">
+					<bi:property name="KEY" value="ScalingShow"/>
+					<bi:property name="TEXT" value="Show Scaling Factors"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="7">
+					<bi:property name="KEY" value="AddDimError"/>
+					<bi:property name="TEXT" value="Please select a maximum of 12 dimensions"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="8">
+					<bi:property name="KEY" value="ChartSettingOpen"/>
+					<bi:property name="TEXT" value="Open Chart Settings"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="9">
+					<bi:property name="KEY" value="ChartSettingClose"/>
+					<bi:property name="TEXT" value="Close Chart Settings"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="10">
+					<bi:property name="KEY" value="ColumnChart"/>
+					<bi:property name="TEXT" value="Column Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="11">
+					<bi:property name="KEY" value="BarChart"/>
+					<bi:property name="TEXT" value="Bar Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="12">
+					<bi:property name="KEY" value="StackedColumnChart"/>
+					<bi:property name="TEXT" value="Stacked Column Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="13">
+					<bi:property name="KEY" value="StackedBarChart"/>
+					<bi:property name="TEXT" value="Stacked Bar Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="14">
+					<bi:property name="KEY" value="FullStackedColumnChart"/>
+					<bi:property name="TEXT" value="Full Stacked Column Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="15">
+					<bi:property name="KEY" value="FullStackedBarChart"/>
+					<bi:property name="TEXT" value="Full Stacked Bar Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="16">
+					<bi:property name="KEY" value="ColumnCombChart"/>
+					<bi:property name="TEXT" value="Column Combination Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="17">
+					<bi:property name="KEY" value="PieChart"/>
+					<bi:property name="TEXT" value="Pie Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="18">
+					<bi:property name="KEY" value="MultiPieChart"/>
+					<bi:property name="TEXT" value="Multi Pie Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="19">
+					<bi:property name="KEY" value="LineChart"/>
+					<bi:property name="TEXT" value="Line Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="20">
+					<bi:property name="KEY" value="HoriLineChart"/>
+					<bi:property name="TEXT" value="Horizontal Line Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="21">
+					<bi:property name="KEY" value="RadarChart"/>
+					<bi:property name="TEXT" value="Radar Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="22">
+					<bi:property name="KEY" value="AreaChart"/>
+					<bi:property name="TEXT" value="Area Chart"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="23">
+					<bi:property name="KEY" value="ShowFilterBar"/>
+					<bi:property name="TEXT" value="Show Filter"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="24">
+					<bi:property name="KEY" value="HideFilterBar"/>
+					<bi:property name="TEXT" value="Hide Filter"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="25">
+					<bi:property name="KEY" value="ShowInfoBar"/>
+					<bi:property name="TEXT" value="Show Information"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="26">
+					<bi:property name="KEY" value="HideInfoBar"/>
+					<bi:property name="TEXT" value="Hide Information"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="27">
+					<bi:property name="KEY" value="NoFilterValue"/>
+					<bi:property name="TEXT" value="No dimension filter set"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="28">
+					<bi:property name="KEY" value="NoVariableValue"/>
+					<bi:property name="TEXT" value="No variables set"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="29">
+					<bi:property name="KEY" value="NoStaticFilterValue"/>
+					<bi:property name="TEXT" value="No static filter set"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="30">
+					<bi:property name="KEY" value="Query"/>
+					<bi:property name="TEXT" value="Query"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="31">
+					<bi:property name="KEY" value="InfoProvider"/>
+					<bi:property name="TEXT" value="Info Provider"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="32">
+					<bi:property name="KEY" value="LastDataUpdate"/>
+					<bi:property name="TEXT" value="Last Data Update"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="33">
+					<bi:property name="KEY" value="LastChangedAt"/>
+					<bi:property name="TEXT" value="Last Changed at"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="34">
+					<bi:property name="KEY" value="CurrentUser"/>
+					<bi:property name="TEXT" value="Current User"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="35">
+					<bi:property name="KEY" value="LastRefresh"/>
+					<bi:property name="TEXT" value="Last Refresh"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="36">
+					<bi:property name="KEY" value="AppInfo"/>
+					<bi:property name="TEXT" value="Application"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="37">
+					<bi:property name="KEY" value="StaticFilter"/>
+					<bi:property name="TEXT" value="Static Filter"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="38">
+					<bi:property name="KEY" value="Variables"/>
+					<bi:property name="TEXT" value="Variables"/>
+				</bi:property>
+				<bi:property name="TEXT_POOL_ENTRY" index="39">
+					<bi:property name="KEY" value="Filter"/>
+					<bi:property name="TEXT" value="Filter"/>
+				</bi:property>
+			</bi:property>
+		</bi:component>
+		<bi:component name="CONTEXT_MENU" type="CONTEXT_MENU_COMPONENT"/>
+		<bi:component name="START_FUNCTIONS" type="GLOBAL_SCRIPTS_COMPONENT">
+			<bi:property name="FUNCTIONS" type="ORDEREDLIST">
+				<bi:property name="FUNCTION" index="0">
+					<bi:property name="NAME" value="on_startup"/>
+					<bi:property name="FUNCTION_BODY">
+						<bi:value><![CDATA[
+	
+
+/* Set Remaining Filter values in case of Navigation */
+
+g_display_mode = "CHART_TABLE";
+
+HELP_FUNCTIONS.display_buttons();
+
+/* Hide Navigation Panel */
+HELP_FUNCTIONS.nav_panel_action();
+HELP_FUNCTIONS.filter_bar_action();
+
+APPLICATION.doBackgroundProcessing();]]></bi:value>
+					</bi:property>
+				</bi:property>
+			</bi:property>
+		</bi:component>
+		<bi:component name="HELP_FUNCTIONS" type="GLOBAL_SCRIPTS_COMPONENT">
+			<bi:property name="FUNCTIONS" type="ORDEREDLIST">
+				<bi:property name="FUNCTION" index="0">
+					<bi:property name="NAME" value="nav_panel_action"/>
+					<bi:property name="FUNCTION_BODY">
+						<bi:value><![CDATA[if (g_navigation_on) {
+	PANEL_BODY_LEFT.setVisible(true);
+	PANEL_BUTTON_GROUP_SETTINGS.setLeftMargin(331);
+	PANEL_BUTTON_GROUP_NAV.setWidth(331);
+	PANEL_BODY.setLeftMargin(331);
+	BUTTON_NAV_SETTINGS_CLOSE.setVisible(true);
+	BUTTON_NAV_SETTINGS_OPEN.setVisible(false);
+	if ((g_settings_on)) {
+		PANEL_BUTTON_GROUP_SETTINGS.setWidth(201);
+	} else {
+		PANEL_BUTTON_GROUP_SETTINGS.setWidth(170);
+	}
+	CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()-1);
+    
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()-1); 
+
+}
+else {
+	PANEL_BODY_LEFT.setVisible(false);
+	PANEL_BUTTON_GROUP_SETTINGS.setLeftMargin(31);
+	PANEL_BUTTON_GROUP_NAV.setWidth(31);
+	PANEL_BODY.setLeftMargin(0);
+	BUTTON_NAV_SETTINGS_CLOSE.setVisible(false);
+	BUTTON_NAV_SETTINGS_OPEN.setVisible(true);
+	if ((g_settings_on)) {
+		PANEL_BUTTON_GROUP_SETTINGS.setWidth(170);
+	}
+	CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()-1);
+
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()-1);
+}]]></bi:value>
+					</bi:property>
+				</bi:property>
+				<bi:property name="FUNCTION" index="1">
+					<bi:property name="NAME" value="display_buttons"/>
+					<bi:property name="FUNCTION_BODY">
+						<bi:value><![CDATA[BUTTON_CHART.setCSSClass("ICON_CHART");
+BUTTON_TABLE.setCSSClass("ICON_TABLE");
+BUTTON_CHART_TABLE.setCSSClass("ICON_CHART_TABLE");
+
+if (g_display_mode == "TABLE") {
+	BUTTON_TABLE.setCSSClass(BUTTON_TABLE.getCSSClass()+ " B_ACTIVE");
+	CHART_SETTINGS.setVisible(false);
+	CHART_SETTINGS.setBottomMargin(0);
+	TABLE_SETTINGS.setVisible(true);
+	TABLE_SETTINGS.setTopMargin(0);		
+}
+else if (g_display_mode == "CHART") {
+	BUTTON_CHART.setCSSClass(BUTTON_CHART.getCSSClass()+ " B_ACTIVE");	
+	CHART_SETTINGS.setVisible(true);
+	CHART_SETTINGS.setBottomMargin(0);
+	TABLE_SETTINGS.setVisible(false);
+	TABLE_SETTINGS.setTopMargin(0);
+
+}
+
+else {
+	BUTTON_CHART_TABLE.setCSSClass(BUTTON_CHART_TABLE.getCSSClass()+ " B_ACTIVE");	
+	CHART_SETTINGS.setVisible(true);
+	CHART_SETTINGS.setBottomMargin(405);
+	TABLE_SETTINGS.setVisible(true);
+	TABLE_SETTINGS.setTopMargin(405);	
+
+}]]></bi:value>
+					</bi:property>
+				</bi:property>
+				<bi:property name="FUNCTION" index="2">
+					<bi:property name="NAME" value="filter_bar_action"/>
+					<bi:property name="FUNCTION_BODY">
+						<bi:value><![CDATA[if (g_filter_on) {
+	BODY.setTopMargin(260);
+	PANEL_BODY_DIALOG.setTopMargin(260);
+
+	BUTTON_HEADER_FILTER.setTooltip(TEXT_POOL.HideFilterBar);
+	PANEL_FILTER_AREA.setVisible(true);
+	
+	BUTTON_HEADER_FILTER.setCSSClass("B_ACTIVE ICON_FILTER");
+
+}
+else {
+	BODY.setTopMargin(61);
+	PANEL_BODY_DIALOG.setTopMargin(60);
+	PANEL_FILTER_AREA.setVisible(false);
+	BUTTON_HEADER_FILTER.setTooltip(TEXT_POOL.ShowFilterBar);
+	BUTTON_HEADER_FILTER.setCSSClass("ICON_FILTER");	
+
+}]]></bi:value>
+					</bi:property>
+				</bi:property>
+				<bi:property name="FUNCTION" index="3">
+					<bi:property name="NAME" value="chart_change_action"/>
+					<bi:property name="FUNCTION_BODY">
+						<bi:value><![CDATA[var l_chart_max = 0.0;
+var l_chart_min = 0.0;
+
+
+	if (chart_y_axis_scaling) {
+		l_chart_max = Convert.stringToFloat(chart_min);
+		l_chart_min = Convert.stringToFloat(chart_max);
+		CHART.setAxisScaling(ChartAxisScaling.Y_AXIS, l_chart_min, l_chart_max);
+		CHART_SPLIT.setAxisScaling(ChartAxisScaling.Y_AXIS, l_chart_min, l_chart_max);
+	} 
+	else {
+		CHART.removeAxisScaling(ChartAxisScaling.Y_AXIS);
+		CHART_SPLIT.removeAxisScaling(ChartAxisScaling.Y_AXIS);
+	}
+
+	if (chart_x_axis_scaling) {
+		l_chart_max = Convert.stringToFloat(chart_min);
+		l_chart_min = Convert.stringToFloat(chart_max);
+		CHART.setAxisScaling(ChartAxisScaling.X_AXIS, l_chart_min, l_chart_max);
+		CHART_SPLIT.setAxisScaling(ChartAxisScaling.X_AXIS, l_chart_min, l_chart_max);
+	} 
+	else {
+		CHART.removeAxisScaling(ChartAxisScaling.X_AXIS);
+		CHART_SPLIT.removeAxisScaling(ChartAxisScaling.X_AXIS);
+	}]]></bi:value>
+					</bi:property>
+					<bi:property name="INPUT_PARAMETERS" type="ORDEREDLIST">
+						<bi:property name="INPUT_PARAMETER" index="0">
+							<bi:property name="NAME" value="chart_min"/>
+							<bi:property name="PARAMETER_TYPE" value="String"/>
+						</bi:property>
+						<bi:property name="INPUT_PARAMETER" index="1">
+							<bi:property name="NAME" value="chart_max"/>
+							<bi:property name="PARAMETER_TYPE" value="String"/>
+						</bi:property>
+						<bi:property name="INPUT_PARAMETER" index="2">
+							<bi:property name="NAME" value="chart_y_axis_scaling"/>
+							<bi:property name="PARAMETER_TYPE" value="boolean"/>
+						</bi:property>
+						<bi:property name="INPUT_PARAMETER" index="3">
+							<bi:property name="NAME" value="chart_x_axis_scaling"/>
+							<bi:property name="PARAMETER_TYPE" value="boolean"/>
+						</bi:property>
+					</bi:property>
+				</bi:property>
+				<bi:property name="FUNCTION" index="4">
+					<bi:property name="NAME" value="settings_panel_action"/>
+					<bi:property name="FUNCTION_BODY">
+						<bi:value><![CDATA[if (g_settings_on) {
+	SETTINGS.setVisible(true);
+	BUTTON_CHART_SETTINGS_OPEN.setVisible(false);
+	BUTTON_CHART_SETTINGS_CLOSE.setVisible(true);
+	PANEL_DETAILS_CROSSTAB.setLeftMargin(201);
+	PANEL_DETAILS_CHART.setLeftMargin(201);
+	PANEL_DETAILS_CHART_TABLE.setLeftMargin(201); 
+	if ((g_navigation_on)) {
+		PANEL_BUTTON_GROUP_SETTINGS.setWidth(201);
+	} else {
+		PANEL_BUTTON_GROUP_SETTINGS.setWidth(170);
+	}
+	CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()-1);
+
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()-1);
+}
+else {
+SETTINGS.setVisible(false);
+BUTTON_CHART_SETTINGS_OPEN.setVisible(true);
+BUTTON_CHART_SETTINGS_CLOSE.setVisible(false);
+
+PANEL_BUTTON_GROUP_SETTINGS.setWidth(30);
+PANEL_DETAILS_CROSSTAB.setLeftMargin(0);
+PANEL_DETAILS_CHART.setLeftMargin(0);
+PANEL_DETAILS_CHART_TABLE.setLeftMargin(0); 
+
+	CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB.setLeftMargin(CROSSTAB.getLeftMargin()-1);
+
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()+1);
+    CROSSTAB_SPLIT.setLeftMargin(CROSSTAB.getLeftMargin()-1);
+
+}]]></bi:value>
+					</bi:property>
+				</bi:property>
+				<bi:property name="FUNCTION" index="5">
+					<bi:property name="NAME" value="setfilterQuarter"/>
+					<bi:property name="FUNCTION_BODY">
+						<bi:value><![CDATA[// Q1
+	if (BUTTON_Q1.getCSSClass() == "B_ACTIVE" && BUTTON_Q2.getCSSClass() == "B_ACTIVE" && BUTTON_Q3.getCSSClass() == "B_ACTIVE" && BUTTON_Q4.getCSSClass() == "B_ACTIVE") {		
+		DS.setFilter("0CALQUART1", ["1", "2", "3", "4"]);
+	}
+	
+	else if (BUTTON_Q1.getCSSClass() == "B_ACTIVE" && BUTTON_Q2.getCSSClass() == "B_ACTIVE" && BUTTON_Q3.getCSSClass() == "B_ACTIVE") {
+		DS.setFilter("0CALQUART1", ["1", "2", "3"]);
+	}
+	
+	else if (BUTTON_Q1.getCSSClass() == "B_ACTIVE" && BUTTON_Q2.getCSSClass() == "B_ACTIVE") {		
+		DS.setFilter("0CALQUART1", ["1", "2"]);
+
+	}
+	
+	else if (BUTTON_Q1.getCSSClass() == "B_ACTIVE" && BUTTON_Q3.getCSSClass() == "B_ACTIVE") {		
+		DS.setFilter("0CALQUART1", ["1", "3"]);
+	}
+	
+	else if (BUTTON_Q1.getCSSClass() == "B_ACTIVE" && BUTTON_Q4.getCSSClass() == "B_ACTIVE") {		
+		DS.setFilter("0CALQUART1", ["1", "4"]);
+	}
+	else if (BUTTON_Q1.getCSSClass() == "B_ACTIVE" ) {		
+		DS.setFilter("0CALQUART1", "1");
+	}
+	
+// Q2
+	else if (BUTTON_Q2.getCSSClass() == "B_ACTIVE" && BUTTON_Q3.getCSSClass() == "B_ACTIVE" && BUTTON_Q4.getCSSClass() == "B_ACTIVE") {		
+		DS.setFilter("0CALQUART1", ["2", "3", "4"]);
+	}
+	
+	else if (BUTTON_Q2.getCSSClass() == "B_ACTIVE" && BUTTON_Q3.getCSSClass() == "B_ACTIVE" ) {		
+		DS.setFilter("0CALQUART1", ["2", "3"]);
+	}
+	
+	else if (BUTTON_Q2.getCSSClass() == "B_ACTIVE" && BUTTON_Q4.getCSSClass() == "B_ACTIVE" ) {		
+		DS.setFilter("0CALQUART1", ["2", "4"]);
+	}
+	else if (BUTTON_Q2.getCSSClass() == "B_ACTIVE" ) {		
+		DS.setFilter("0CALQUART1", "2");
+	}
+
+// Q3	
+	else if (BUTTON_Q3.getCSSClass() == "B_ACTIVE" && BUTTON_Q4.getCSSClass() == "B_ACTIVE" ) {		
+		DS.setFilter("0CALQUART1", ["3", "4"]);
+	}
+	
+	else if (BUTTON_Q3.getCSSClass() == "B_ACTIVE") {		
+		DS.setFilter("0CALQUART1", "3");
+	}
+	
+// Q4
+	else if (BUTTON_Q4.getCSSClass() == "B_ACTIVE" ) {		
+		DS.setFilter("0CALQUART1", "4");
+	}
+	
+	else {		
+		DS.clearFilter("0CALQUART1");
+	}
+	
+]]></bi:value>
+					</bi:property>
+				</bi:property>
+			</bi:property>
+		</bi:component>
+	</bi:component>
+</bi:biapp>
